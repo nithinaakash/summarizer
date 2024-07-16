@@ -1,6 +1,6 @@
-// pages/api/summarize.ts
-
-export const runtime = 'edge';
+export const config = {
+  runtime: 'edge',  // Set the runtime to edge
+};
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
@@ -14,14 +14,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   if (req.method === 'POST') {
     const { text } = req.body;
     try {
-      const response = await axios.post('https://rassgsummarizer.vercel.app/api/summarize', { text });
-      if (response.status === 200) {
-        res.status(200).json({ summary: response.data.summary });
+      const response = await axios.post('https://example.com/summarize', { text });  // Replace with your backend URL
+      res.status(200).json({ summary: response.data.summary });
+    } catch (error: any) {  // Ensure 'error' is typed as 'any'
+      if (axios.isAxiosError(error) && error.response) {
+        res.status(error.response.status).json({ error: error.response.data.error || 'Error summarizing text' });
       } else {
-        res.status(response.status).json({ error: 'Error summarizing text' });
+        res.status(500).json({ error: 'Error summarizing text' });
       }
-    } catch (error) {
-      res.status(500).json({ error: 'Error summarizing text' });
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });
