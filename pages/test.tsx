@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
   const [inputText, setInputText] = useState('');
@@ -21,7 +19,7 @@ const Home = () => {
   };
 
   return (
-   <div className="text-center bg-black bg-opacity-60 p-10 rounded-xl shadow-xl backdrop-blur-sm ">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
       <h1 className="text-3xl text-white mb-5">Text Summarizer</h1>
       <div className={`flex ${summary ? 'flex-row' : 'flex-col'} items-center justify-center w-full max-w-6xl transition-all duration-500`}>
         <textarea
@@ -35,7 +33,7 @@ const Home = () => {
           className={`py-2 px-5 rounded-md bg-blue-600 text-white text-lg cursor-pointer transition duration-300 ease-in-out hover:bg-blue-800 ${summary ? 'mx-5' : ''}`}
           disabled={loading}
         >
-          {loading ? <FontAwesomeIcon icon={faPizzaSlice} spin /> : 'Summarize'}
+          {loading ? 'Loading...' : 'Summarize'}
         </button>
         {summary && (
           <div className="ml-5 bg-white bg-opacity-10 p-5 rounded-lg shadow-md w-full transition-all duration-500 overflow-y-auto max-h-36">
@@ -46,7 +44,7 @@ const Home = () => {
       </div>
       {loading && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <FontAwesomeIcon icon={faPizzaSlice} size="4x" spin />
+          <div className="loader"></div>
         </div>
       )}
     </div>
