@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   if (req.method === 'POST') {
     const { text } = req.body;
     try {
-      const response = await axios.post('http://localhost:5000/summarize', { text });
+      const response = await axios.post('https://97ac655d.summarizer-lhe.pages.dev/api/summarize', { text });
       if (response.status === 200) {
         res.status(200).json({ summary: response.data.summary });
       } else {
