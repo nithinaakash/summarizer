@@ -24,7 +24,7 @@ def summarize():
         inputs = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=1024, truncation=True)
 
         # Generate summary using BART model
-        summary_ids = model.generate(inputs, max_length=15000, min_length=1, length_penalty=2.0, num_beams=4, early_stopping=True)
+        summary_ids = model.generate(inputs, max_length=15000, min_length=3, length_penalty=2.0, num_beams=4, early_stopping=True)
         
         # Decode the generated summary
         summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
@@ -34,5 +34,6 @@ def summarize():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# Ensure this line is only run during local development
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
