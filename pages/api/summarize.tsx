@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   if (req.method === 'POST') {
     const { text } = req.body;
     try {
-      const response = await axios.post('https://summarizer-lhe.pages.dev/api/summarize', { text });  // Replace with your backend URL
+      const response = await axios.post('https://ragsummarizer.vercel.app/summarize', { text });  // Replace with your backend URL
       res.status(200).json({ summary: response.data.summary });
     } catch (error: any) {  // Ensure 'error' is typed as 'any'
       if (axios.isAxiosError(error) && error.response) {
