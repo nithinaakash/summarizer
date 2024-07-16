@@ -7,23 +7,30 @@ const Home = () => {
   const [inputText, setInputText] = useState('');
   const [summary, setSummary] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async () => {
     setLoading(true);
+    setError('');
     try {
       const response = await axios.post('/api/summarize', { text: inputText });
-      setSummary(response.data.summary);
+      if (response.status === 200) {
+        setSummary(response.data.summary);
+      } else {
+        setError('Error summarizing text');
+      }
     } catch (error) {
       console.error('Error summarizing text:', error);
+      setError('Error summarizing text');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-   <div className="text-center bg-black bg-opacity-60 p-10 rounded-xl shadow-xl backdrop-blur-sm ">
+    <div className="text-center bg-black bg-opacity-60 p-10 rounded-xl shadow-xl backdrop-blur-sm w-full max-w-6xl h-auto">
       <h1 className="text-3xl text-white mb-5">Text Summarizer</h1>
-      <div className={`flex ${summary ? 'flex-row' : 'flex-col'} items-center justify-center w-full max-w-6xl transition-all duration-500`}>
+      <div className={`flex ${summary ? 'flex-row' : 'flex-col'} items-center justify-center w-full transition-all duration-500`}>
         <textarea
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
@@ -44,6 +51,11 @@ const Home = () => {
           </div>
         )}
       </div>
+      {error && (
+        <div className="mt-5 text-red-500 text-lg">
+          {error}
+        </div>
+      )}
       {loading && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <FontAwesomeIcon icon={faPizzaSlice} size="4x" spin />
