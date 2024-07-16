@@ -1,9 +1,15 @@
 {
   "version": 2,
   "builds": [
-    { "src": "bart.py", "use": "@vercel/python" }
+    {
+      "src": "backend/vercel/app.py",
+      "use": "@vercel/python"
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "bart.py" }
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/vercel/app.py"
+    }
   ]
 }
