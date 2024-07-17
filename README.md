@@ -1,4 +1,6 @@
-This project provides a text summarizer application that leverages a Flask backend with a BART model for text summarization and a Next.js frontend for user interaction.
+This project provides a text summarizer application that leverages a Flask backend with a BART/RAG model for text summarization and a Next.js frontend for user interaction.
+
+
 
 ## Getting Started
 

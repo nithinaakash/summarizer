@@ -12,29 +12,29 @@ const Home = ({ initialText = '', initialSummary = '' }) => {
   const handleSubmit = async () => {
     setLoading(true);
     setError('');
-    setSummary(inputText);
-    // setLoading(true);
-    // try {
-    //   const response = await axios.post('/api/summarize', { text: inputText });
-    //   if (response.status === 200) {
-    //     setSummary(response.data.summary);
-    //   }else if  (response.status === 500)
-    //   {
-    //     console.error('Error susss:', error);
-    //     setSummary(inputText);
-    //   }
-    //    else {
-    //     setError('Error summarizing text');
-    //     setSummary(inputText);
-    //   }
-    // } 
-    // catch (error) {
-    //   console.error('Error summarizing text:', error);
-    //   setError('Error summarizing text');
-    // }
-    //  finally {
+    // setSummary(inputText);
+    setLoading(true);
+    try {
+      const response = await axios.post('/api/summarize', { text: inputText });
+      if (response.status === 200) {
+        setSummary(response.data.summary);
+      }else if  (response.status === 500)
+      {
+        console.error('Error susss:', error);
+        setSummary(inputText);
+      }
+       else {
+        setError('Error summarizing text');
+        setSummary(inputText);
+      }
+    } 
+    catch (error) {
+      console.error('Error summarizing text:', error);
+      setError('Error summarizing text');
+    }
+     finally {
       setLoading(false);
-    // }
+    }
   };
 
   return (
