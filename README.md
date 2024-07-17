@@ -16,7 +16,7 @@ https://drive.google.com/file/d/1hhXlThp5ttPBrKbz3ze_xBvwuofsih4f/view?usp=drive
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
@@ -103,13 +103,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ### Installation
 
-1. Navigate to the frontend directory:
-
-    ```sh
-    cd ../frontend
-    ```
-
-2. Install the required packages:
+1. Install the required packages:
 
     ```sh
     npm install
@@ -189,6 +183,3 @@ To deploy the Flask backend on Vercel:
 4. Push to the branch (`git push origin feature-branch`).
 5. Open a pull request.
 
-## License
-
-This project is licensed under the MIT License.
