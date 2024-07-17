@@ -1,5 +1,9 @@
 This project provides a text summarizer application that leverages a Flask backend with a BART/RAG model for text summarization and a Next.js frontend for user interaction.
 
+CloudFare Pages Deployment: https://summarizer-lhe.pages.dev/
+Vercel Deployment: https://ragsummarizer.vercel.app/
+
+Currently the projects return the input text on the summary box as the backend deployment in free tier is not having enough memory/storage space to download the requirement libraries. it works perfectly on local
 
 
 ## Getting Started
