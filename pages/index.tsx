@@ -3,28 +3,38 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons';
 
-const Home = () => {
-  const [inputText, setInputText] = useState('');
-  const [summary, setSummary] = useState('');
+const Home = ({ initialText = '', initialSummary = '' }) => {
+  const [inputText, setInputText] = useState(initialText);
+  const [summary, setSummary] = useState(initialSummary);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleSubmit = async () => {
     setLoading(true);
     setError('');
-    try {
-      const response = await axios.post('/api/summarize', { text: inputText });
-      if (response.status === 200) {
-        setSummary(response.data.summary);
-      } else {
-        setError('Error summarizing text');
-      }
-    } catch (error) {
-      console.error('Error summarizing text:', error);
-      setError('Error summarizing text');
-    } finally {
+    setSummary(inputText);
+    // setLoading(true);
+    // try {
+    //   const response = await axios.post('/api/summarize', { text: inputText });
+    //   if (response.status === 200) {
+    //     setSummary(response.data.summary);
+    //   }else if  (response.status === 500)
+    //   {
+    //     console.error('Error susss:', error);
+    //     setSummary(inputText);
+    //   }
+    //    else {
+    //     setError('Error summarizing text');
+    //     setSummary(inputText);
+    //   }
+    // } 
+    // catch (error) {
+    //   console.error('Error summarizing text:', error);
+    //   setError('Error summarizing text');
+    // }
+    //  finally {
       setLoading(false);
-    }
+    // }
   };
 
   return (
