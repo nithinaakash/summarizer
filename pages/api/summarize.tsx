@@ -6,9 +6,6 @@
 //   error?: string;
 // };
 
-// export const config = {
-//   runtime: 'edge',  // Set the runtime to edge
-// };
 
 // export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 //   if (req.method === 'POST') {
@@ -32,6 +29,10 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
+
+export const config = {
+  runtime: 'edge',  // Set the runtime to edge
+};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
